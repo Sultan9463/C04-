@@ -1,27 +1,49 @@
-#include <stdio.h>
-
-int main() {
-    int n, i, j;
-    // demande la taille du tableau
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+    int i, j, n;
     scanf("%d", &n);
-    int tab[n];
-    //lire les element du tableau
-    for (int i = 0 ; i < n; i++) {
-        scanf("%d", &tab[i]);
+    int tab[n], tempt[2];
+    // Lire les éléments du tableau
+    for(i = 0; i < n; i++)
+    {
+        scanf("%d ",&tab[i]);
     }
-    printf("Après supression des doublons :");
-    for (int i = 0 ; i < n; i++) {
-        int est_doublon = 0;
-        for (j = 0; j < i; j++) {
-            if (tab[i] == tab[j]) {
-                est_doublon = 1;
-                break;
+    // Trier le tableau
+    for(i = 0; i < n; i++)
+    {
+        for(j = i + 1; j < n; j++)
+        {
+            if(tab[i] > tab[j])
+            {
+                tempt[0] = tab[i]; tab[i] = tab[j]; tab[j] = tempt[0];
             }
         }
-        if (!est_doublon) {
-            printf("%d", tab[i]);
+    }
+    int m = n;
+    int k;
+    // Afficher le tableau trié
+    for (i = 0; i < m; i++)
+    {
+        for (j = i + 1; j < m; j++)
+        {
+            if (tab[i] == tab[j])
+            {
+                for (int k = j; k < m - 1; k++)
+                {
+                    tab[k] = tab[k + 1];
+                }
+                m--;
+                j--;
+            }
         }
     }
-    printf("\n");
-    return 0;
+    // Afficher le tableau sans doublons
+    printf("Après suppression des doublons : ");
+    for(i = 0; i < m; i++)
+    {
+        printf("%d ", tab[i]);
+    }
+
 }
