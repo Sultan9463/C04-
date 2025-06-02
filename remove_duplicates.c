@@ -9,7 +9,7 @@ int main() {
     for (int i = 0 ; i < n; i++) {
         scanf("%d", &tab[i]);
     }
-    printf("Après supression : ");
+    printf("Après supression des doublons :");
     for (int i = 0 ; i < n; i++) {
         int est_doublon = 0;
         for (j = 0; j < i; j++) {
