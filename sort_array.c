@@ -1,31 +1,32 @@
 #include <stdio.h>
-
-void TrierTableau(int tab[], int taille) {
-    for (int i = 0 ; i < taille - 1; i++) {
-        for (int j = 0 ; j < taille - i - 1; j++) {
-            if (tab[j] > tab[j + 1]) { // echange des elements
-                int temp = tab[j];
-                tab[j] = tab[j + 1];
-                tab[j + 1] = temp;
-            } 
-
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+    int i, j, n;
+    scanf("%d", &n);
+    int tab[n], tempt[2];
+    // Lire les éléments du tableau
+    for(i = 0; i < n; i++)
+    {
+        scanf("%d ",&tab[i]);
+    }
+    // Trier le tableau
+    for(i = 0; i < n; i++)
+    {
+        for(j = i + 1; j < n; j++)
+        {
+            if(tab[i] > tab[j])
+            {
+                tempt[0] = tab[i]; tab[i] = tab[j]; tab[j] = tempt[0];
+            }
         }
     }
-}
-
-int main() {
-    int n;
-    // demande la taille du tableau
-    scanf("%d", &n);
-    int tab[n];
-    //lire les element du tableau
-    for (int i = 0 ; i < n; i++) {
-        scanf("%d", &tab[i]);
-    }
-    TrierTableau(tab, n);
+    // Afficher le tableau trié
     printf("Tableau trié : ");
-    for (int i = 0 ; i < n; i++) {
-        printf("%d", tab[i]);
+    for(i = 0; i < n; i++)
+    {
+        printf("%d ", tab[i]);
     }
     return 0;
 }
